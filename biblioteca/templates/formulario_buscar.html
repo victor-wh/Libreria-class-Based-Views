@@ -1,0 +1,18 @@
+<html>
+    <head>
+        <tilte>Buscar</tilte>
+    </head>
+    <body>
+        {% if error %}
+            <ul>
+                {% for error in error %}
+                <li style="color:red;">{{error}}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+        <form action="/buscar/" method="get">
+            <input type = "text" name="q">
+            <input type = "submit" value="Buscar">
+        </form>
+    </body>
+</html>

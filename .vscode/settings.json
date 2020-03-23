@@ -1,0 +1,12 @@
+{
+    "python.pythonPath": "/var/waps/entornos/test/bin/python",
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true,
+        "**/*.pyc":true,
+        "**/*__init__.py":true,
+    },
+}

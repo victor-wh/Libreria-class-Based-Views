@@ -1,0 +1,13 @@
+{% extends "base.html"%}
+{%  block title %}Editar Autor{% endblock %}
+{% block h1%} Eliminar Editor{% endblock %}
+<html>
+    {% block content %}
+    <form method="post">
+        {% csrf_token %}
+        <h3>¿Desea eliminar {{object.nombre}}?</h3>
+        <button class="btm btn-danger" type="submit">Sí, eliminar</button>
+        <a class="btn btn-default" href="{% url 'editores' %}">Cancelar</a>
+    </form>
+    {% endblock %}
+</html>

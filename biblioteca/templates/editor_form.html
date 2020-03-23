@@ -1,0 +1,15 @@
+{% extends "base.html"%}
+{%  block title %}Agregar Editor{% endblock %}
+{% block h1%} Agregar Editor{% endblock %}
+<html>
+    {% block menu%}
+    <a class="btn btn-secondary my-2 my-sm-0" href="{% url 'editores' %}">Volver</a>
+    {% endblock%}
+    {% block content %}
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p}}
+        <button type="submit">Guardar</button>
+    </form>
+    {% endblock %}
+</html>

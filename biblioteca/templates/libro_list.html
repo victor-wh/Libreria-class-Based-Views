@@ -1,0 +1,63 @@
+{% extends "base.html"%}
+{%  block title %}Libros encontrados {% endblock %}
+<html>
+    {% block h1%} Libros encontrados{% endblock %}
+    {% block menu%}
+    <a class="btn btn-secondary my-2 my-sm-0" href="{% url 'libro_view' %}">Agregar</a>
+    {% endblock%}
+    {%  block content %}
+    {% if object_list %}
+
+    
+    <ul>
+        <table style="width:100%"cellpadding="10" >
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Titulo</th>
+                    <th>Autores</th> 
+                    <th>Editor</th>
+                    <th>Fecha de Publicacion</th>
+                    <th>Portada</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% if object_list %}
+                    {% for Libros in object_list %}
+                    <tr>
+                        <td>{{Libros.id}}</td>
+                        <td>{{Libros.titulo}}</td>
+                        <td>
+                        {% for autores in Libros.autores.all %}
+                           {{autores}}.
+                        {% endfor %}
+                        </td>
+                        <td>{{Libros.editor}}</td>
+                        <td>{{Libros.fecha_publicacion}}</td>
+                        <td>{{Libros.portada}}</td>
+                        <td>
+                            <a class= "btn btn-primary" href="{% url 'libro_edit' Libros.id%}">Editar</a>
+                            <a class= "btn btn-danger" href="{% url 'libro_delete' Libros.id%}">Eliminar</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                {% else %}
+                    <h1>No hay registros de Libros</h1>
+                {% endif %}
+            </tbody>
+              
+        </table>
+        
+    </ul>
+    {% else %}
+    <p>Ningun Autor coincide con el criterio de busqueda.</p>
+    {% endif %}
+</html>
+<style>
+    table, th, td {
+      border: 0px solid black;
+      text-align: center;
+    }
+</style>
+{% endblock %}

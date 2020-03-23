@@ -1,0 +1,21 @@
+{% extends "base.html"%}
+{%  block title %}Menu2{% endblock %}
+
+<html>
+    {% block h1%} Biblioteca{% endblock %}
+    {% block menu%}
+    <li class="nav-item active">
+        <a class= "btn btn-primary" href="{% url 'ver_autores2' %}">Autores2</a>
+    </li>
+    <li class="nav-item">
+        <a class= "btn btn-primary" href="{% url 'editores' %}">Editores</a>
+    </li>
+    <li class="nav-item">
+        <a class= "btn btn-primary" href="{% url 'libros' %}">Libros</a>
+    </li>
+    {% endblock %}
+    {% block content %}
+    
+    
+    {% endblock %}
+</html>

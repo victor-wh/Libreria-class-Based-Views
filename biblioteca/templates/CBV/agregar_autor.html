@@ -1,0 +1,15 @@
+{% extends "base.html"%}
+{%  block title %}Agregar Autor{% endblock %}
+{% block h1%} Agregar Autor2{% endblock %}
+<html>
+    {% block menu%}
+    <a class="btn btn-secondary my-2 my-sm-0" href="{% url 'ver_autores2' %}">Volver</a>
+    {% endblock%}
+    {% block content %}
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p}}
+        <button type="submit">Guardar</button>
+    </form>
+    {% endblock %}
+</html>

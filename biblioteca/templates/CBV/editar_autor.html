@@ -1,0 +1,15 @@
+{% extends "base.html"%}
+{%  block title %}Editar Autor{% endblock %}
+{% block h1%} Editar autor2{% endblock %}
+<html>
+    {% block menu%}
+    <a class="btn btn-secondary my-2 my-sm-0" href="{% url 'ver_autores2' %}">Volver</a>
+    {% endblock%}
+    {% block content %}
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p}}
+        <button type="submit">Guardar</button>
+    </form>
+    {% endblock %}
+</html>

@@ -1,0 +1,54 @@
+{% extends "base.html"%}
+{%  block title %}Autores encontrados {% endblock %}
+<html>
+    {% block h1%} Autores encontrados{% endblock %}
+    {% block menu%}
+    <a class="btn btn-secondary my-2 my-sm-0" href="{% url 'autor_view' %}">Agregar</a>
+    {% endblock%}
+    {%  block content %}
+    {% if autores %}
+    
+    <ul>
+        <table style="width:100%"cellpadding="10" >
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th> 
+                    <th>Email</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% if autores %}
+                    {% for autores in autores %}
+                    <tr>
+                        <td>{{autores.id}}</td>
+                        <td >{{autores.nombre}}</td>
+                        <td >{{autores.apellidos}}</td>
+                        <td>{{autores.email}}</td>
+                        <td>
+                            <a class= "btn btn-primary" href="{% url 'autor_edit' autores.id %}">Editar</a>
+                            <a class= "btn btn-danger" href="{% url 'autor_delete' autores.id %}">Eliminar</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                {% else %}
+                    <h1>No hay registros de autores</h1>
+                {% endif %}
+            </tbody>
+              
+        </table>
+        
+    </ul>
+    {% else %}
+    <p>Ningun Autor coincide con el criterio de busqueda.</p>
+    {% endif %}
+</html>
+<style>
+    table, th, td {
+      border: 0px solid black;
+      text-align: center;
+    }
+</style>
+{% endblock %}

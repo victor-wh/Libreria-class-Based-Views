@@ -1,0 +1,60 @@
+{% extends "base.html"%}
+{%  block title %}Editores encontrados {% endblock %}
+<html>
+    {% block h1%} Editores encontrados{% endblock %}
+    {% block menu%}
+    <a class="btn btn-secondary my-2 my-sm-0" href="{% url 'editor_view' %}">Agregar</a>
+    {% endblock%}
+    {%  block content %}
+    {% if object_list %}
+    
+    <ul>
+        <table style="width:100%"cellpadding="10" >
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Nombre</th>
+                    <th>Domicilio</th> 
+                    <th>Ciudad</th>
+                    <th>Estado</th>
+                    <th>País</th>
+                    <th>Website</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% if object_list %}
+                    {% for Editores in object_list %}
+                    <tr>
+                        <td>{{Editores.id}}</td>
+                        <td>{{Editores.nombre}}</td>
+                        <td>{{Editores.domicilio}}</td>
+                        <td>{{Editores.ciudad}}</td>
+                        <td>{{Editores.estado}}</td>
+                        <td>{{Editores.pais}}</td>
+                        <td>{{Editores.website}}</td>
+                        <td>
+                            <a class= "btn btn-primary" href="{% url 'editor_edit' Editores.id %}">Editar</a>
+                            <a class= "btn btn-danger" href="{% url 'editor_delete' Editores.id %}">Eliminar</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                {% else %}
+                    <h1>No hay registros de Editores</h1>
+                {% endif %}
+            </tbody>
+              
+        </table>
+        
+    </ul>
+    {% else %}
+    <p>Ningun Autor coincide con el criterio de busqueda.</p>
+    {% endif %}
+</html>
+<style>
+    table, th, td {
+      border: 0px solid black;
+      text-align: center;
+    }
+</style>
+{% endblock %}
